@@ -1,7 +1,29 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const BankContainer = () => {
-  const [state, setState] = useState({
+  const styles = {
+    table: {
+      fontFamily: 'Quicksand, sans-serif',
+      borderCollapse: 'collapse',
+      width: '99%',
+      fontSize: "20px",
+      td: {
+        border: '1px solid #dddddd',
+        textAlign: 'left',
+        padding: '10px',
+      },
+      th: {
+        border: '1px solid #dddddd',
+        padding: '10px',
+        textAlign:'center',
+      },
+      tr: {
+        borderRadius: '10px',
+      }
+    },
+  }
+
+  const state = {
     transactions: [
       {
         id: 1,
@@ -34,14 +56,29 @@ const BankContainer = () => {
       }
     ],
     activeCategory: 'All'
-  })
+  }
 
   const displayedTransactions = [...state.transactions]
 
   return (
-    <div className='ui grid container'>
-      {/* Insert code here */}
-    </div>
+    <React.Fragment>
+      <table style={styles.table}>
+        <tr style={styles.table.tr}>
+          <th style={styles.table.th}>Posted At</th>
+          <th style={styles.table.th}>Description</th>
+          <th style={styles.table.th}>Category</th>
+          <th style={styles.table.th}>Amount</th>
+        </tr>
+        {displayedTransactions.map((eachTransaction) => (
+          <tr key={eachTransaction.id}>
+            <td style={styles.table.td}>{eachTransaction.posted_at}</td>
+            <td style={styles.table.td}>{eachTransaction.description}</td>
+            <td style={styles.table.td}>{eachTransaction.category}</td>
+            <td style={styles.table.td}>{eachTransaction.amount}</td>
+          </tr>
+        ))}
+      </table>
+    </React.Fragment>
   )
 }
 
