@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Radio, RadioGroup } from 'rsuite';
 
 
 const BankContainer = () => {
   const [activeCategory, setActiveCategory] = useState({
-    radioList:'A'
+    category: 'All'
   })
   const styles = {
     table: {
@@ -63,7 +63,9 @@ const BankContainer = () => {
     activeCategory: 'All'
   }
 
-  const displayedTransactions = [...state.transactions]
+  const filteredTransactions = state.transactions.filter(transaction => transaction.category === activeCategory.category);
+
+  console.log(filteredTransactions);
 
   const handleChange = (name, value) => {
     setActiveCategory({
@@ -75,21 +77,21 @@ const BankContainer = () => {
   return (
     <React.Fragment>
       <RadioGroup
-        name="radioList"
-        value={activeCategory.radioList}
-        onChange={value => handleChange('radioList', value)}
+        name="category"
+        value={activeCategory.category}
+        onChange={value => handleChange('category', value)}
       >
-        <div style={{display:"flex", justifyContent:"space-between"}}>
-        <Radio checked={activeCategory.radioList === 'A'? true : false} value="A">All</Radio>
-        <Radio checked={activeCategory.radioList === 'B'? true : false} value="B">Entertainment</Radio>
-        <Radio checked={activeCategory.radioList === 'C'? true : false} value="C">Income</Radio>
-        <Radio checked={activeCategory.radioList === 'D'? true : false} value="D">Food</Radio>
-        <Radio checked={activeCategory.radioList === 'E'? true : false} value="E">Fashion</Radio>
-        <Radio checked={activeCategory.radioList === 'F'? true : false} value="F">Gift</Radio>
-        <Radio checked={activeCategory.radioList === 'G'? true : false} value="G">ATM</Radio>
-        <Radio checked={activeCategory.radioList === 'H'? true : false} value="H">Transportation</Radio>
-        <Radio checked={activeCategory.radioList === 'I'? true : false} value="I">Housing</Radio>
-        <Radio checked={activeCategory.radioList === 'J'? true : false} value="J">Misery</Radio>
+        <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap" }}>
+          <Radio checked={activeCategory.category === 'All' ? true : false} value="All">All</Radio>
+          <Radio checked={activeCategory.category === 'Entertainment' ? true : false} value="Entertainment">Entertainment</Radio>
+          <Radio checked={activeCategory.category === 'Income' ? true : false} value="Income">Income</Radio>
+          <Radio checked={activeCategory.category === 'Food' ? true : false} value="Food">Food</Radio>
+          <Radio checked={activeCategory.category === 'Fashion' ? true : false} value="Fashion">Fashion</Radio>
+          <Radio checked={activeCategory.category === 'Gift' ? true : false} value="Gift">Gift</Radio>
+          <Radio checked={activeCategory.category === 'ATM' ? true : false} value="ATM">ATM</Radio>
+          <Radio checked={activeCategory.category === 'Transportation' ? true : false} value="Transportation">Transportation</Radio>
+          <Radio checked={activeCategory.category === 'Housing' ? true : false} value="Housing">Housing</Radio>
+          <Radio checked={activeCategory.category === 'Misery' ? true : false} value="Misery">Misery</Radio>
         </div>
       </RadioGroup>
       <table style={styles.table}>
@@ -99,14 +101,26 @@ const BankContainer = () => {
           <th style={styles.table.th}>Category</th>
           <th style={styles.table.th}>Amount</th>
         </tr>
-        {displayedTransactions.map((eachTransaction) => (
-          <tr key={eachTransaction.id}>
-            <td style={styles.table.td}>{eachTransaction.posted_at}</td>
-            <td style={styles.table.td}>{eachTransaction.description}</td>
-            <td style={styles.table.td}>{eachTransaction.category}</td>
-            <td style={styles.table.td}>{eachTransaction.amount}</td>
-          </tr>
-        ))}
+        {filteredTransactions && (
+          filteredTransactions.map((eachTransaction) => (
+            <tr key={eachTransaction.id}>
+              <td style={styles.table.td}>{eachTransaction.posted_at}</td>
+              <td style={styles.table.td}>{eachTransaction.description}</td>
+              <td style={styles.table.td}>{eachTransaction.category}</td>
+              <td style={styles.table.td}>{eachTransaction.amount}</td>
+            </tr>
+          ))
+        )}
+        {activeCategory.category === "All" && (
+          state.transactions.map((eachTransaction) => (
+            <tr key={eachTransaction.id}>
+              <td style={styles.table.td}>{eachTransaction.posted_at}</td>
+              <td style={styles.table.td}>{eachTransaction.description}</td>
+              <td style={styles.table.td}>{eachTransaction.category}</td>
+              <td style={styles.table.td}>{eachTransaction.amount}</td>
+            </tr>
+          ))
+        )}
       </table>
     </React.Fragment>
   )
