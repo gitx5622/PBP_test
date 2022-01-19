@@ -1,10 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './components/App'
-import 'semantic-ui-css/semantic.min.css'
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'rsuite/dist/rsuite.min.css';
+import App from './components/App';
 
 ReactDOM.render(
-  <App />,
+  <React.StrictMode>
+      <App />
+  </React.StrictMode>,
   document.getElementById('root')
-)
+);
+
