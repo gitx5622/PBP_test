@@ -1,6 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react';
+import { Radio, RadioGroup } from 'rsuite';
+
 
 const BankContainer = () => {
+  const [activeCategory, setActiveCategory] = useState({
+    radioList:'A'
+  })
   const styles = {
     table: {
       fontFamily: 'Quicksand, sans-serif',
@@ -15,7 +20,7 @@ const BankContainer = () => {
       th: {
         border: '1px solid #dddddd',
         padding: '10px',
-        textAlign:'center',
+        textAlign: 'center',
       },
       tr: {
         borderRadius: '10px',
@@ -60,8 +65,33 @@ const BankContainer = () => {
 
   const displayedTransactions = [...state.transactions]
 
+  const handleChange = (name, value) => {
+    setActiveCategory({
+      [name]: value
+    });
+    console.log(name, value);
+  }
+
   return (
     <React.Fragment>
+      <RadioGroup
+        name="radioList"
+        value={activeCategory.radioList}
+        onChange={value => handleChange('radioList', value)}
+      >
+        <div style={{display:"flex", justifyContent:"space-between"}}>
+        <Radio checked={activeCategory.radioList === 'A'? true : false} value="A">All</Radio>
+        <Radio checked={activeCategory.radioList === 'B'? true : false} value="B">Entertainment</Radio>
+        <Radio checked={activeCategory.radioList === 'C'? true : false} value="C">Income</Radio>
+        <Radio checked={activeCategory.radioList === 'D'? true : false} value="D">Food</Radio>
+        <Radio checked={activeCategory.radioList === 'E'? true : false} value="E">Fashion</Radio>
+        <Radio checked={activeCategory.radioList === 'F'? true : false} value="F">Gift</Radio>
+        <Radio checked={activeCategory.radioList === 'G'? true : false} value="G">ATM</Radio>
+        <Radio checked={activeCategory.radioList === 'H'? true : false} value="H">Transportation</Radio>
+        <Radio checked={activeCategory.radioList === 'I'? true : false} value="I">Housing</Radio>
+        <Radio checked={activeCategory.radioList === 'J'? true : false} value="J">Misery</Radio>
+        </div>
+      </RadioGroup>
       <table style={styles.table}>
         <tr style={styles.table.tr}>
           <th style={styles.table.th}>Posted At</th>
