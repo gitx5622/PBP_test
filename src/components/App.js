@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { Panel } from 'rsuite';
 import BankContainer from './BankContainer'
 
 class App extends Component {
-  render () {
+  render() {
     return (
-      <div className='ui raised segment'>
-        <div className='ui center aligned segment violet inverted'>
+      <Fragment>
+        <Panel bordered style={{display:"flex", justifyContent: "center", background:"#6435c9", color:"white"}}>
           <h2>PBP Expense Calculator</h2>
-        </div>
-
+        </Panel>
         <BankContainer />
-      </div>
+      </Fragment>
     )
   }
 }
