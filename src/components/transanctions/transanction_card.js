@@ -1,8 +1,9 @@
 import React from 'react';
+import {formatDate} from "../../utils/date";
 
-const TransanctionCard = ({filteredTransactions, activeCategory, transactionData}) => {
+const TransanctionCard = ({ filteredTransactions, activeCategory, transactionData }) => {
     return (
-        <div style={{overflowX:"auto"}}>
+        <div style={{ overflowX: "auto" }}>
             <table style={styles.table}>
                 <tr style={styles.table.tr}>
                     <th style={styles.table.th}>Posted At</th>
@@ -13,7 +14,7 @@ const TransanctionCard = ({filteredTransactions, activeCategory, transactionData
                 {filteredTransactions && (
                     filteredTransactions.map((eachTransaction) => (
                         <tr key={eachTransaction.id}>
-                            <td style={styles.table.td}>{eachTransaction.posted_at}</td>
+                            <td style={styles.table.td}>{formatDate(eachTransaction.posted_at)}</td>
                             <td style={styles.table.td}>{eachTransaction.description}</td>
                             <td style={styles.table.td}>{eachTransaction.category}</td>
                             <td style={styles.table.td}>{eachTransaction.amount}</td>
@@ -23,7 +24,7 @@ const TransanctionCard = ({filteredTransactions, activeCategory, transactionData
                 {activeCategory.category === "All" && (
                     transactionData.map((eachTransaction) => (
                         <tr key={eachTransaction.id}>
-                            <td style={styles.table.td}>{eachTransaction.posted_at}</td>
+                            <td style={styles.table.td}>{formatDate(eachTransaction.posted_at)}</td>
                             <td style={styles.table.td}>{eachTransaction.description}</td>
                             <td style={styles.table.td}>{eachTransaction.category}</td>
                             <td style={styles.table.td}>{eachTransaction.amount}</td>

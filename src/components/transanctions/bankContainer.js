@@ -1,6 +1,6 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { Radio, RadioGroup } from 'rsuite';
-import transactionData from './sample_data.json';
+import transactionData from './transactions_data.json';
 import TransanctionCard from "./transanction_card";
 
 const BankContainer = () => {
@@ -36,11 +36,11 @@ const BankContainer = () => {
           <Radio checked={activeCategory.category === 'Misery'} value="Misery">Misery</Radio>
         </div>
       </RadioGroup>
-        <TransanctionCard
-            filteredTransactions={filteredTransactions}
-            activeCategory={activeCategory}
-            transactionData={transactionData}
-        />
+      <TransanctionCard
+        filteredTransactions={filteredTransactions}
+        activeCategory={activeCategory}
+        transactionData={transactionData}
+      />
     </React.Fragment>
   )
 }
