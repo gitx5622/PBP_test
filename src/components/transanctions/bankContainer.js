@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, { useMemo, useState } from 'react';
 import { Radio, RadioGroup } from 'rsuite';
 import transactionData from './transactions_data.json';
 import TransanctionCard from "./transanction_card";
@@ -10,8 +10,8 @@ const BankContainer = () => {
   })
 
   const filteredTransactions = useMemo(() =>
-      transactionData.filter(transaction => transaction.category === activeCategory.category),
-      [activeCategory.category]);
+    transactionData.filter(transaction => transaction.category === activeCategory.category),
+    [activeCategory.category]);
 
   const handleChange = (name, value) => {
     setActiveCategory({

@@ -1,5 +1,5 @@
 import React from 'react';
-import {formatDate} from "../../utils/date";
+import { formatDate } from "../../utils/date";
 import '../../styles/transactionCard.scss';
 
 const TransanctionCard = ({ filteredTransactions, activeCategory, transactionData }) => {
@@ -24,13 +24,13 @@ const TransanctionCard = ({ filteredTransactions, activeCategory, transactionDat
                 )}
                 {activeCategory.category === "All" && (
                     transactionData.map((eachTransaction) => (
-                            <tr key={eachTransaction.id}>
-                                <td>{formatDate(eachTransaction.posted_at)}</td>
-                                <td>{eachTransaction.description}</td>
-                                <td>{eachTransaction.category}</td>
-                                <td>{eachTransaction.amount}</td>
-                            </tr>
-                        ))
+                        <tr key={eachTransaction.id}>
+                            <td>{formatDate(eachTransaction.posted_at)}</td>
+                            <td>{eachTransaction.description}</td>
+                            <td>{eachTransaction.category}</td>
+                            <td>{eachTransaction.amount}</td>
+                        </tr>
+                    ))
                 )}
             </table>
         </div>
