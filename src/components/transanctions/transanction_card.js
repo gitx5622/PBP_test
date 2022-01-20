@@ -24,14 +24,15 @@ const TransanctionCard = ({ filteredTransactions, activeCategory, transactionDat
                 )}
                 {activeCategory.category === "All" && (
                     transactionData.map((eachTransaction) => (
-                        <tr key={eachTransaction.id}>
-                            <td>{formatDate(eachTransaction.posted_at)}</td>
-                            <td>{eachTransaction.description}</td>
-                            <td>{eachTransaction.category}</td>
-                            <td>{eachTransaction.amount}</td>
-                        </tr>
-                    ))
+                            <tr key={eachTransaction.id}>
+                                <td>{formatDate(eachTransaction.posted_at)}</td>
+                                <td>{eachTransaction.description}</td>
+                                <td>{eachTransaction.category}</td>
+                                <td>{eachTransaction.amount}</td>
+                            </tr>
+                        ))
                 )}
+                    )}
             </table>
         </div>
     );

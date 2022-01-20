@@ -9,7 +9,6 @@ const BankContainer = () => {
     category: 'All',
   })
 
-
   const filteredTransactions = useMemo(() =>
       transactionData.filter(transaction => transaction.category === activeCategory.category),
       [activeCategory.category]);
