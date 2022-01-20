@@ -32,7 +32,6 @@ const TransanctionCard = ({ filteredTransactions, activeCategory, transactionDat
                             </tr>
                         ))
                 )}
-                    )}
             </table>
         </div>
     );
