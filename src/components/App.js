@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Panel } from 'rsuite';
-import BankContainer from './BankContainer'
+import BankContainer from './transanctions/bankContainer'
 
 class App extends Component {
   render() {
