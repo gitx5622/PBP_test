@@ -1,0 +1,22 @@
+.tableContainer {
+  overflow-x: auto;
+  .table {
+    font-family: Quicksand, sans-serif;
+    border-collapse: collapse;
+    width: 99%;
+    font-size: 20px;
+    tr {
+      border-radius: 10px;
+      th {
+        border: 1px solid #dddddd;
+        padding: 10px;
+        text-align: center;
+      }
+        td {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 10px;
+        }
+    }
+  }
+}

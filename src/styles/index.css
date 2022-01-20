@@ -1,3 +1,9 @@
 * {
     margin: 5px;
 }
+.navbar {
+    display: flex;
+    justify-content: center;
+    background: #6435c9;
+    color: white;
+}
